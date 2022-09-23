@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+} *head,*tail,*temp,*new;
+int main()
+{   head=0;
+    int choice;
+    while(choice)
+    {
+       new=(struct node *)malloc(sizeof(struct node));
+       new->next=0;
+       scanf("%d",&new->data);
+       if(head==0)
+       {
+           head=tail=new;
+       }
+       else
+       {
+           tail->next=new;
+           tail=new;
+           tail->next=head;
+       }
+       scanf("%d",&choice);
+    
+    }
+    temp=head;
+    while(temp->next!=head)
+    {
+        printf("%d",temp->data);
+        temp=temp->next;
+    }
+    printf("%d",temp->data);
+}
