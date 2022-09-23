@@ -1,0 +1,32 @@
+#include <stdio.h>
+int search(int arr[100],int N,int X);
+int main()
+{
+    int arr[100],N,X,i;
+    scanf("%d %d",&N,&X);
+    for(i=0;i<N;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    int res=search(arr,N,X);
+    if(res==-1)
+    {
+        printf("element is not found");
+    }
+    else
+    {
+        printf("element is found at index %d",res);
+    }
+}
+int search(int arr[100],int N,int X)
+{
+    int j;
+    for(j=0;j<N;j++)
+    {
+        if(arr[j]==X)
+        {
+            return j;
+        }
+    }
+    return -1;
+}
