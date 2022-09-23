@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct Node
+{
+    int data;
+    struct Node * next;
+};
+struct Node * traversal(struct Node *head)
+{
+    struct Node * ptr=(struct Node *)malloc(sizeof(struct Node));
+    ptr=head;
+    while(ptr!=0)
+    {
+        printf("%d ",ptr->data);
+        ptr=ptr->next;
+    }
+}
+struct Node * dellastele(struct Node *head)
+{
+    struct Node * ptr=(struct Node *)malloc(sizeof(struct Node));
+    struct Node * prev=(struct Node *)malloc(sizeof(struct Node));
+    ptr=head;
+    while(ptr->next!=0)
+    {   prev=ptr;
+        ptr=ptr->next;
+    }
+    if(ptr==head)
+    {
+        head=0;
+    }
+    else
+    {
+        prev->next=0;
+    }
+    free(ptr);
+    return head;
+}
+
+int main()
+{
+ struct Node *head,*newnode,*temp;
+ int pos,ele;
+ head=0;
+ int choice;
+ while(choice)
+ {
+ newnode=(struct Node *)malloc(sizeof(struct Node));
+ newnode->next=0;
+ scanf("%d",&newnode->data);
+ if(head==0)
+ {
+     head=temp=newnode;
+ }
+ else
+ {
+     temp->next=newnode;
+     temp=newnode;
+ }
+     printf("do you want to continue(0,1)");
+     scanf("%d",&choice);
+ }
+ traversal(head);
+ printf("\n");
+ head=dellastele(head);
+ traversal(head);
+ 
+ 
+
+    return 0;
+}
+
+5
+do you want to continue(0,1)1
+3
+do you want to continue(0,1)1
+8
+do you want to continue(0,1)1
+7
+do you want to continue(0,1)0
+5 3 8 7 
+5 3 8 
+
+...Program finished with exit code 0
+Press ENTER to exit console.
