@@ -1,0 +1,40 @@
+#include <stdio.h>
+void insertion(int arr[100],int n);
+int main()
+{
+    int arr[100],i,n;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    insertion(arr,n);
+
+    return 0;
+}
+void insertion(int arr[100],int n)
+{
+    int k,j,temp;
+    for(k=1;k<n;k++)
+    {
+        temp=arr[k];
+        for(j=k;j>0&&temp<arr[j-1];j--)
+        {
+            arr[j]=arr[j-1];
+        }
+        arr[j]=temp;
+    }
+    for(k=0;k<n;k++)
+    {
+        printf("%d ",arr[k]);
+    }
+    
+}
+
+5
+15
+10
+6
+13
+12
+6 10 12 13 15 
