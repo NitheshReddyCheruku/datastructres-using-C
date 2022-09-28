@@ -1,0 +1,84 @@
+#include <stdio.h>
+int large(int arr[],int n)
+{
+    int large=arr[0],i;
+    for(i=0;i<n;i++)
+    {
+        if(arr[i]>large)
+        {
+            large=arr[i];
+        }
+    }
+    return large;
+}
+void radixsort(int arr[],int n)
+{
+    int bucket[10][10],bucketc[10];
+    int i,j,k,remainder,divisor=1,nop=0,largest,step;
+    largest=large(arr,n);
+    printf("the larget element is %d",largest);
+    printf("\n");
+    while(largest>0)
+    {
+        nop=nop+1;
+        largest=largest/10;
+    }
+    for(step=0;step<nop;step++)
+    {
+        for(i=0;i<10;i++)
+        {
+            bucketc[i]=0;
+        }
+        for(i=0;i<n;i++)
+        {
+            remainder=(arr[i]/divisor)%10;
+            bucket[remainder][bucketc[remainder]]=arr[i];
+            bucketc[remainder]=bucketc[remainder]+1;
+        }
+        i=0;
+        for(k=0;k<10;k++)
+        {
+            for(j=0;j<bucketc[k];j++)
+            {
+                arr[i]=bucket[k][j];
+                i++;
+            }
+        }
+        divisor=divisor*10;
+        for(i=0;i<n;i++)
+        {
+            printf(" %d  ",arr[i]);
+        }
+        printf("\n");
+    }
+}
+int main()
+{
+    int i,arr[10],n;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    radixsort(arr,n);
+    for(i=0;i<n;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+::::output::::
+
+5
+12
+49
+25
+9
+4
+the larget element is 49
+ 12   4   25   49   9  
+ 4   9   12   25   49  
+4 9 12 25 49 
